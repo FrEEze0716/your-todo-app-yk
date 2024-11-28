@@ -82,10 +82,10 @@ const TodoList = () => {
 
   return (
     <div className="p-3">
-      <div className="d-flex my-3">
+      <div className="d-flex flex-wrap flex-md-nowrap my-3">
         <AddTodo />
 
-        <InputGroup className="mx-3 flex-grow-1">
+        <InputGroup className="my-3 my-md-0 mx-md-3 flex-grow-1">
           <span className="input-group-text">
             <i className="bi bi-search"></i>
           </span>

@@ -100,7 +100,7 @@ const ImportExport = ({ todos }) => {
   };
 
   return (
-    <div className="d-flex flex-wrap flex-md-nowrap justify-content-between align-items-center">
+    <div className="d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-center">
       <Button
         className="text-nowrap mb-3"
         variant="info"
@@ -111,9 +111,9 @@ const ImportExport = ({ todos }) => {
 
       <Form.Group
         controlId="formFile"
-        className="d-inline-flex mb-3 align-items-center"
+        className="d-inline-flex flex-wrap flex-md-nowrap mb-3 align-items-center"
       >
-        <Form.Label className="text-nowrap mx-3 text-info">
+        <Form.Label className="text-nowrap me-3 text-info">
           Import To-Do List from Excel File:
         </Form.Label>
         <Form.Control type="file" onChange={importFromExcel} />
