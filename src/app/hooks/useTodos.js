@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Toast, ToastContainer } from "react-bootstrap";
+import dayjs from "dayjs";
 
 const TodoContext = createContext();
 
@@ -11,18 +12,14 @@ export const TodoProvider = ({ children }) => {
   const [toastMessage, setToastMessage] = useState("");
 
   const updateExpiredStatus = (todos) => {
-    const currentDate = new Date();
-
-    console.log("currentDate");
-    console.log(currentDate);
+    const dayBefore = dayjs().subtract(1, "day").toISOString().split("T")[0];
 
     return todos.map((todo) => {
-      const dueDate = todo.dueDate;
-      console.log(dueDate < currentDate);
+      const dueDate = new Date(todo.dueDate).toISOString().split("T")[0];
 
       return {
         ...todo,
-        isExpired: dueDate < currentDate,
+        isExpired: dueDate < dayBefore ? true : false,
       };
     });
   };
@@ -32,9 +29,6 @@ export const TodoProvider = ({ children }) => {
 
     const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
     const updatedTodos = updateExpiredStatus(savedTodos);
-
-    console.log("updatedTodos");
-    console.log(updatedTodos);
 
     setTodos(updatedTodos);
   }, []);
