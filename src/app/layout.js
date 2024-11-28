@@ -1,5 +1,9 @@
 import localFont from "next/font/local";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import { TodoProvider } from "./hooks/useTodos";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <TodoProvider>{children}</TodoProvider>
       </body>
     </html>
   );
